@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Input Dialog</title>
+        <style>
+            body,
+            html {
+                font-family: Arial, sans-serif;
+                padding: 0;
+                margin: 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                /* height: 100vh; */
+                /* width: 100vw; */
+                overflow: hidden;
+                background-color: #f4f4f9;
+            }
+            .dialog {
+                /* width: 100vw;
+                height: 100vh; */
+                /* padding: 20px; */
+                margin: 70px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                background-color: transparent;
+                /* border-radius: 8px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+            }
+            h2 {
+                font-size: 20px;
+                margin-bottom: 10px;
+                text-align: left;
+            }
+            input {
+                width: 90vw;
+                padding: 10px;
+                font-size: 16px;
+                /* margin: 10px 50px; */
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                margin-bottom: 10px;
+            }
+            button {
+                width: 90vw;
+                padding: 10px;
+                background-color: #007bff;
+                color: white;
+                border: none;
+                /* margin: 10px 50px; */
+                border-radius: 4px;
+                font-size: 16px;
+                cursor: pointer;
+            }
+            button:hover {
+                background-color: #0056b3;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="dialog">
+            <form onsubmit="handleSubmit()">
+                <h2>
+                    Digite em quanto tempo você deseja trocar o oleo(dias)...
+                </h2>
+                <input type="text" required id="inputField" />
+                <button type="submit">Enviar</button>
+            </form>
+        </div>
+
+        <script>
+            window.addEventListener("beforeunload", function (event) {
+                const inputValue = document
+                    .getElementById("inputField")
+                    ?.value.trim();
+                if (!inputValue) {
+                    event.preventDefault(); // Impede o fechamento
+                    alert(
+                        "Por favor, preencha o campo de input antes de fechar!"
+                    );
+                }
+            });
+            // Função chamada quando o botão "Enviar" é clicado
+            function handleSubmit() {
+                const inputValue = document.getElementById("inputField").value;
+
+                // Enviar o valor para o processo principal usando ipcRenderer
+                window.electronApp.dialogOilResponse(inputValue);
+                // Fechar o diálogo após o envio
+                window.close();
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,49 @@
+.select-box-tire select {
+    background-color: #0563af;
+    color: white;
+    padding: 5px;
+    width: 90%;
+    border: none;
+    font-size: 18px;
+    margin: 30px 30px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+    -webkit-appearance: button;
+    appearance: button;
+    outline: none;
+}
+.select-box-tire {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.select-box-tire::before {
+    /* position: absolute;
+    top: 0;
+    right: 0; */
+    width: fit-content;
+    height: 100%;
+    text-align: center;
+    font-size: 28px;
+    line-height: 45px;
+    color: rgba(255, 255, 255, 0.5);
+    background-color: rgba(255, 255, 255, 0.1);
+    pointer-events: none;
+}
+
+.select-box-tire:hover::before {
+    color: rgba(255, 255, 255, 0.6);
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.select-box-tire select option {
+    padding: 30px;
+}
+.select-title {
+    color: #fff;
+    font-weight: 600;
+    font-family: "Courier New", Courier, monospace;
+    font-size: 18px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}

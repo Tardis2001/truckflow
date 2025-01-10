@@ -1,0 +1,20 @@
+{
+    "appId": "com.matheus.truckflow",
+    "files": [
+        "dist-electron/**/*",
+        "dist-react",
+        "dist-electron/electron/preload.js"
+    ],
+    "icon": "./desktopIcon",
+    "mac": {
+        "target": "dmg"
+    },
+    "linux": {
+        "target": "AppImage",
+        "category": "Utility"
+    },
+    "win": {
+        "target": ["portable", "msi"]
+    },
+    "extraResources": ["dist-electron/electron/preload.js"]
+}

@@ -1,0 +1,25 @@
+html,
+body {
+    /* background: rgb(208, 60, 63);
+    background: linear-gradient(
+        90deg,
+        rgba(208, 60, 63, 1) 0%,
+        rgba(255, 90, 48, 1) 100%
+    ); */
+    background-image: url("./assets/truck.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: hidden;
+
+    width: 100vw;
+    height: 100vh;
+}
+* {
+    margin: 0;
+    padding: 0;
+}
+@font-face {
+    font-family: "Hanken Grotesk";
+    src: local("HankenGrotesk"),
+        url(./assets/HankenGrotesk-VariableFont_wght.ttf) format(truetype);
+}
