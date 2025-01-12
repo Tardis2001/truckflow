@@ -1,13 +1,13 @@
-.truck-content {
+.title {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    justify-content: left;
+    align-items: left;
     gap: 50px;
 }
 
 .box {
-    width: 600px;
+    width: 90%;
     padding: 40px;
     margin-bottom: 50px;
     backdrop-filter: blur(10px);
@@ -22,11 +22,16 @@
     color: #fff;
     text-align: center;
 }
-
-.box .model-box {
+.content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.box .model_box {
     position: relative;
 }
-.title-truck {
+.title {
     font-family: "Courier New", Courier, monospace;
     font-weight: 800;
     font-size: 32px;
@@ -34,7 +39,7 @@
 
     color: #fff;
 }
-.box .model-box input {
+.box .model_box input {
     width: 100%;
     padding: 10px 0;
     font-size: 16px;
@@ -45,7 +50,7 @@
     outline: none;
     background: transparent;
 }
-.box .model-box label {
+.box .model_box label {
     position: absolute;
     top: 0;
     left: 0;
@@ -56,21 +61,14 @@
     transition: 0.5s;
 }
 
-/* .box .model-box input:focus ~ label,
-.box .model-box input:valid ~ label {
-    top: -20px;
-    left: 0;
-    color: #03e9f4;
-    font-size: 12px;
-} */
-.box .model-box input:not(:placeholder-shown) ~ label {
+.box .model_box input:not(:placeholder-shown) ~ label {
     top: -20px;
     left: 0;
     color: #03e9f4;
     font-size: 12px;
 }
 
-.box .model-box input:placeholder-shown ~ label {
+.box .model_box input:placeholder-shown ~ label {
     top: 0;
     font-size: 16px;
     color: #fff;
@@ -95,7 +93,7 @@ input::-webkit-inner-spin-button {
     letter-spacing: 4px;
 }
 
-.submit-truck {
+.submit {
     appearance: none;
     background-color: #000000;
     border: 2px solid #1a1a1a;
@@ -126,22 +124,22 @@ input::-webkit-inner-spin-button {
     will-change: transform;
 }
 
-.submit-truck:disabled {
+.submit:disabled {
     pointer-events: none;
 }
 
-.submit-truck:hover {
+.submit:hover {
     box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
     color: #03e9f4;
     transform: translateY(-2px);
 }
 
-.submit-truck:active {
+.submit:active {
     box-shadow: none;
     transform: translateY(0);
 }
 
-.select-box select {
+.select_box select {
     background-color: #0563af;
     color: white;
     padding: 5px;
@@ -154,7 +152,7 @@ input::-webkit-inner-spin-button {
     outline: none;
 }
 
-.select-box::before {
+.select_box::before {
     /* position: absolute;
     top: 0;
     right: 0; */
@@ -168,15 +166,15 @@ input::-webkit-inner-spin-button {
     pointer-events: none;
 }
 
-.select-box:hover::before {
+.select_box:hover::before {
     color: rgba(255, 255, 255, 0.6);
     background-color: rgba(255, 255, 255, 0.2);
 }
 
-.select-box select option {
+.select_box select option {
     padding: 30px;
 }
-.select-title {
+.select_title {
     color: #fff;
     font-weight: 600;
     font-family: "Courier New", Courier, monospace;
@@ -184,7 +182,7 @@ input::-webkit-inner-spin-button {
     margin-top: 20px;
     margin-bottom: 10px;
 }
-.floating-stack {
+.floating_stack {
     background: #455a64;
     color: #fff;
     height: 300px;
@@ -192,7 +190,7 @@ input::-webkit-inner-spin-button {
     border-radius: 1rem;
     overflow-y: auto;
 }
-.floating-stack {
+.floating_stack {
     background: #455a64;
     color: #fff;
     height: 300px;
@@ -201,14 +199,14 @@ input::-webkit-inner-spin-button {
     overflow-y: auto;
 }
 
-.floating-stack > dl {
+.floating_stack > dl {
     margin: 0 0 1rem;
     display: grid;
     grid-template-columns: 2.5rem 1fr;
     align-items: center;
 }
 
-.floating-stack dt {
+.floating_stack dt {
     position: sticky;
     top: 0;
     left: 0;
@@ -227,7 +225,7 @@ input::-webkit-inner-spin-button {
     box-sizing: border-box;
 }
 
-.floating-stack dd {
+.floating_stack dd {
     grid-column: 2;
     margin: 0;
     display: flex;
@@ -235,24 +233,24 @@ input::-webkit-inner-spin-button {
     padding: 0.75rem;
 }
 
-.floating-stack > dl:first-of-type > dd:first-of-type {
+.floating_stack > dl:first_of_type > dd:first_of_type {
     margin-top: 0.25rem;
 }
 
 /* Adicionando uma cor para o botão de remoção */
-.remove-btn {
+.remove_button {
     background: transparent;
     border: none;
     color: #ff0000;
-    font-size: 14px;
+    font-size: 20px;
     cursor: pointer;
     margin-left: 10px;
 }
 
-.remove-btn:hover {
+.remove_button:hover {
     color: #fff;
 }
-.driver-list {
+.driver_list {
     list-style-type: none;
     padding: 0;
     margin: 0;
@@ -261,7 +259,7 @@ input::-webkit-inner-spin-button {
     gap: 5px;
 }
 
-.driver-item {
+.driver_item {
     background-color: #f9f9f9;
     padding: 5px;
     border-radius: 5px;
@@ -270,6 +268,72 @@ input::-webkit-inner-spin-button {
     transition: background-color 0.3s ease;
 }
 
-.driver-item:hover {
+.driver_item:hover {
     background-color: #e0e0e0;
+}
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+table {
+    background: #f5f5f5;
+    border-collapse: separate;
+    box-shadow: inset 0 1px 0 #fff;
+    font-size: 12px;
+    line-height: 24px;
+    margin: 30px auto;
+    text-align: left;
+    width: 90%;
+}
+
+td {
+    border-right: 1px solid #fff;
+    border-left: 1px solid #e8e8e8;
+    border-top: 1px solid #fff;
+    border-bottom: 1px solid #e8e8e8;
+    padding: 10px 15px;
+    position: relative;
+    transition: all 300ms;
+}
+
+td:first-child {
+    box-shadow: inset 1px 0 0 #fff;
+}
+
+td:last-child {
+    border-right: 1px solid #e8e8e8;
+    box-shadow: inset -1px 0 0 #fff;
+}
+
+tr {
+    background: url(https://jackrugile.com/images/misc/noise-diagonal.png);
+}
+
+tr:nth-child(odd) td {
+    background: #f1f1f1
+        url(https://jackrugile.com/images/misc/noise-diagonal.png);
+}
+
+tr:last-of-type td {
+    box-shadow: inset 0 -1px 0 #fff;
+}
+
+tr:last-of-type td:first-child {
+    box-shadow: inset 1px -1px 0 #fff;
+}
+
+tr:last-of-type td:last-child {
+    box-shadow: inset -1px -1px 0 #fff;
+}
+
+tbody:hover td {
+    color: transparent;
+    text-shadow: 0 0 3px #aaa;
+}
+
+tbody:hover tr:hover td {
+    color: #444;
+    text-shadow: 0 1px 0 #fff;
 }

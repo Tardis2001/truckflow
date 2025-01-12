@@ -1,7 +1,7 @@
 import { ChangeEvent, FormEvent, useEffect, useState } from "react";
-import "./Truck.css";
-import { truck } from "../../types/truck";
-import { driver } from "../../types/driver";
+import { truck } from "../../../types/truck";
+import { driver } from "../../../types/driver";
+import styles from "./Truck.module.css";
 function Truck() {
     const [truck, setTruck] = useState<truck>({
         id: undefined,
@@ -130,8 +130,8 @@ function Truck() {
     );
     return (
         <>
-            <h2 className="title-truck">Frota de Caminhões</h2>
-            <div className="truck-content">
+            <h2 className={styles.title}>Frota de Caminhões</h2>
+            <div className={styles.content}>
                 <table>
                     <thead>
                         <tr>
@@ -152,7 +152,7 @@ function Truck() {
                                 <td>{truck.model}</td>
                                 <td>{truck.year}</td>
                                 <td>
-                                    <ul className="driver-list">
+                                    <ul className={styles.driver_list}>
                                         {Array.isArray(truck.driver) &&
                                         truck.driver.length > 0 ? (
                                             truck.driver.map((driverId) => {
@@ -162,7 +162,9 @@ function Truck() {
                                                 return (
                                                     <li
                                                         key={driverId}
-                                                        className="driver-item"
+                                                        className={
+                                                            styles.driver_item
+                                                        }
                                                     >
                                                         {driverInfo
                                                             ? driverInfo.name
@@ -179,10 +181,10 @@ function Truck() {
                         ))}
                     </tbody>
                 </table>
-                <div className="box">
+                <div className={styles.box}>
                     <h2>Adiciona Caminhão</h2>
                     <form onSubmit={handleSubmit}>
-                        <div className="model-box">
+                        <div className={styles.model_box}>
                             <input
                                 type="text"
                                 name="plate"
@@ -193,7 +195,7 @@ function Truck() {
                             />
                             <label>Placa</label>
                         </div>
-                        <div className="model-box">
+                        <div className={styles.model_box}>
                             <input
                                 type="text"
                                 name="model"
@@ -204,7 +206,7 @@ function Truck() {
                             />
                             <label>Modelo</label>
                         </div>
-                        <div className="model-box">
+                        <div className={styles.model_box}>
                             <input
                                 type="number"
                                 name="year"
@@ -216,7 +218,7 @@ function Truck() {
                             <label>Ano</label>
                         </div>
 
-                        <div className="select-box">
+                        <div className={styles.select_box}>
                             <select onChange={handleDriversChange}>
                                 <option value="">Escolha um motorista</option>
                                 {drivers.map((driver) => (
@@ -226,10 +228,12 @@ function Truck() {
                                 ))}
                             </select>
                         </div>
-                        <div className="driver-list">
-                            <label className="select-title">Motoristas:</label>
-                            <div className="container">
-                                <div className="floating-stack">
+                        <div className={styles.driver_list}>
+                            <label className={styles.select_title}>
+                                Motoristas:
+                            </label>
+                            <div className={styles.container}>
+                                <div className={styles.floating_stack}>
                                     {Object.keys(groupedSelectedDrivers).map(
                                         (initial) => (
                                             <dl>
@@ -246,7 +250,9 @@ function Truck() {
                                                                     driver.id
                                                                 )
                                                             }
-                                                            className="remove-btn"
+                                                            className={
+                                                                styles.remove_button
+                                                            }
                                                         >
                                                             X
                                                         </button>
@@ -259,15 +265,15 @@ function Truck() {
                             </div>
                         </div>
 
-                        <button className="submit-truck" type="submit">
+                        <button className={styles.submit} type="submit">
                             Adicionar Caminhão
                         </button>
                     </form>
                 </div>
-                <div className="box">
+                <div className={styles.box}>
                     <h2>Atualiza Caminhão</h2>
                     <form onSubmit={handleUpdateSubmit}>
-                        <div className="model-box">
+                        <div className={styles.model_box}>
                             <input
                                 type="text"
                                 name="id"
@@ -278,7 +284,7 @@ function Truck() {
                             />
                             <label>Id</label>
                         </div>
-                        <div className="model-box">
+                        <div className={styles.model_box}>
                             <input
                                 type="text"
                                 name="plate"
@@ -289,7 +295,7 @@ function Truck() {
                             />
                             <label>Placa</label>
                         </div>
-                        <div className="model-box">
+                        <div className={styles.model_box}>
                             <input
                                 type="text"
                                 name="model"
@@ -300,7 +306,7 @@ function Truck() {
                             />
                             <label>Modelo</label>
                         </div>
-                        <div className="model-box">
+                        <div className={styles.model_box}>
                             <input
                                 type="number"
                                 name="year"
@@ -312,7 +318,7 @@ function Truck() {
                             <label>Ano</label>
                         </div>
 
-                        <div className="select-box">
+                        <div className={styles.select_box}>
                             <select onChange={handleDriversUpdateChange}>
                                 <option value="">Escolha um motorista</option>
                                 {drivers.map((driver) => (
@@ -322,10 +328,12 @@ function Truck() {
                                 ))}
                             </select>
                         </div>
-                        <div className="driver-list">
-                            <label className="select-title">Motoristas:</label>
-                            <div className="container">
-                                <div className="floating-stack">
+                        <div className={styles.driver_list}>
+                            <label className={styles.select_title}>
+                                Motoristas:
+                            </label>
+                            <div className={styles.container}>
+                                <div className={styles.floating_stack}>
                                     {Object.keys(groupednewDriversTruck).map(
                                         (initial) => (
                                             <dl>
@@ -342,7 +350,9 @@ function Truck() {
                                                                     driver.id
                                                                 )
                                                             }
-                                                            className="remove-btn"
+                                                            className={
+                                                                styles.remove_button
+                                                            }
                                                         >
                                                             X
                                                         </button>
@@ -355,7 +365,7 @@ function Truck() {
                             </div>
                         </div>
 
-                        <button className="submit-truck" type="submit">
+                        <button className={styles.submit} type="submit">
                             Atualiza Caminhão
                         </button>
                     </form>

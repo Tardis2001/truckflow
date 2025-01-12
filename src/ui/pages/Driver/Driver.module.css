@@ -1,10 +1,11 @@
-.driver-content {
+.content {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: 100px;
 }
-.title-driver {
+.title {
     font-family: "Courier New", Courier, monospace;
     font-weight: 800;
     font-size: 32px;
@@ -27,10 +28,10 @@
     text-align: left;
 }
 
-.box .model-box {
+.box .model_box {
     position: relative;
 }
-.box .model-box input {
+.box .model_box input {
     width: 100%;
     padding: 10px 0;
     font-size: 16px;
@@ -41,7 +42,7 @@
     outline: none;
     background: transparent;
 }
-.box .model-box label {
+.box .model_box label {
     position: absolute;
     top: 0;
     left: 0;
@@ -52,14 +53,14 @@
     transition: 0.2s;
 }
 
-.box .model-box input:not(:placeholder-shown) ~ label {
+.box .model_box input:not(:placeholder-shown) ~ label {
     top: -20px;
     left: 0;
     color: #03e9f4;
     font-size: 12px;
 }
 
-.box .model-box input:placeholder-shown ~ label {
+.box .model_box input:placeholder-shown ~ label {
     top: 0;
     font-size: 16px;
     color: #fff;
@@ -134,25 +135,23 @@ table {
 }
 
 th {
-    background: url(https://jackrugile.com/images/misc/noise-diagonal.png),
-        linear-gradient(#777, #444);
-    border-left: 1px solid #555;
+    background: linear-gradient(90deg, #573b8a, #cf2ac7);
+    /* border-left: 1px solid #555;
     border-right: 1px solid #777;
     border-top: 1px solid #555;
-    border-bottom: 1px solid #333;
-    box-shadow: inset 0 1px 0 #999;
+    border-bottom: 1px solid #333; */
+    /* box-shadow: inset 0 1px 0 #999; */
     color: #fff;
     font-weight: bold;
     padding: 10px 15px;
     position: relative;
-    text-shadow: 0 1px 0 #000;
+    /* text-shadow: 0 1px 0 #000; */
 }
-
 th:after {
-    background: linear-gradient(
-        rgba(255, 255, 255, 0),
-        rgba(255, 255, 255, 0.08)
-    );
+    background: transparent;
+}
+/* th:after {
+    background: linear-gradient(90deg, #573b8a, #cf2ac7);
     content: "";
     display: block;
     height: 25%;
@@ -161,16 +160,16 @@ th:after {
     position: absolute;
     top: 25%;
     width: 100%;
-}
+} */
 
-th:first-child {
+/* th:first-child {
     border-left: 1px solid #777;
     box-shadow: inset 1px 1px 0 #999;
 }
 
 th:last-child {
     box-shadow: inset -1px 1px 0 #999;
-}
+} */
 
 td {
     border-right: 1px solid #fff;

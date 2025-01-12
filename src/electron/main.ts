@@ -92,7 +92,17 @@ ipcMain.handle("addDriver", (_, driver: driver) => {
     const newDriver = { ...driver, id: generateId("driver") };
     store.set("drivers", [...drivers, newDriver]);
 });
+ipcMain.handle("deleteDriver", (_, idDriver: number) => {
+    const drivers = (store.get("driver") as driver[]) || [];
 
+    // Filtra os itens, excluindo aquele com o id fornecido
+    const updateddriver = drivers.filter((driver) => driver.id !== idDriver);
+
+    // Atualiza a lista no armazenamento
+    store.set("driver", updateddriver);
+
+    console.log(`Item com id ${idDriver} removido.`);
+});
 ipcMain.handle("updateDriver", (_, newDriver: driver) => {
     const drivers = (store.get("drivers") as driver[]) || [];
     const driverIndex = drivers.findIndex((d) => d.id === Number(newDriver.id));
@@ -192,7 +202,17 @@ ipcMain.handle("getTiresMonthData", (_, month: number) => {
 
     return filteredTires; // Retorna apenas os pneus filtrados
 });
+ipcMain.handle("removeTire", (_, tireId: number) => {
+    const tires = (store.get("tire") as tire[]) || [];
 
+    // Filtra os itens, excluindo aquele com o id fornecido
+    const updatedtire = tires.filter((tire) => tire.id !== tireId);
+
+    // Atualiza a lista no armazenamento
+    store.set("tire", updatedtire);
+
+    console.log(`Item com id ${tireId} removido.`);
+});
 /*-----------------Tire---------------- */
 /*-----------------Oil---------------- */
 ipcMain.handle("addOil", (_, oil: oil) => {
@@ -212,6 +232,26 @@ ipcMain.handle("getOil", (_, truckId: number) => {
     );
 
     return filteredOil;
+});
+// ipcMain.handle("getOil", (_, truckId: number) => {
+//     const oil = (store.get("oil") as oil[]) || [];
+//     const filteredOil = oil.filter(
+//         (oil) => Number(oil.truckId) === Number(truckId)
+//     );
+
+//     return filteredOil;
+// });
+
+ipcMain.handle("deleteOil", (_, oilId: number) => {
+    const oils = (store.get("oil") as oil[]) || [];
+
+    // Filtra os itens, excluindo aquele com o id fornecido
+    const updatedoil = oils.filter((oil) => oil.id !== oilId);
+
+    // Atualiza a lista no armazenamento
+    store.set("oil", updatedoil);
+
+    console.log(`Item com id ${oilId} removido.`);
 });
 ipcMain.handle("getOils", () => {
     const oils = store.get("oil"); // Isso pode ser um banco de dados ou uma variável

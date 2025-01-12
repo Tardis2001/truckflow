@@ -22,14 +22,14 @@ export default process.once("loaded", () => {
         getTire:(truckId:number)=> ipcRenderer.invoke("getTire",truckId),
         addTireData:(tire : tire) => ipcRenderer.invoke("addTireData",tire),
         updateTireData:(updateTire : tire) => ipcRenderer.invoke("updateTire",updateTire),
-        removeTireData:(idTire : number) => ipcRenderer.invoke("removeTire",idTire),
+        removeTire:(tireId : number) => ipcRenderer.invoke("removeTire",tireId),
         getTiresMonthData:(month:number) => ipcRenderer.invoke("getTiresMonthData",month),
 
         getOil:(truckId:number)=> ipcRenderer.invoke("getOil",truckId),
         getOils:()=> ipcRenderer.invoke("getOils"),
         addOil:(oil : oil) => ipcRenderer.invoke("addOil",oil),
         updateOildata:(updateOil : oil) => ipcRenderer.invoke("updateOildata",updateOil),
-        removeOilData:(idOil : number) => ipcRenderer.invoke("removeOil",idOil),
+        deleteOil:(idOil : number) => ipcRenderer.invoke("deleteOil",idOil),
         getOilsMonthandYearData:(month:number,year:number) => ipcRenderer.invoke("getOilsMonthData",month,year),
         
         // openDialog: () => ipcRenderer.invoke("openDialog"),

@@ -1,0 +1,37 @@
+.chart_container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-column-gap: 5px;
+    grid-row-gap: 5px;
+    border-radius: 10px;
+
+    background-color: aliceblue;
+}
+.title {
+    font-family: "Courier New", Courier, monospace;
+    font-weight: 800;
+    font-size: 32px;
+    margin: 30px;
+    color: #fff;
+}
+.month_selector {
+    margin: 10px 0;
+}
+
+.month-selector input {
+    padding: 8px;
+    font-size: 16px;
+}
+.container {
+    width: 80%;
+    margin: 20px auto;
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+.main_container_chart {
+    width: 80%;
+    margin: 20px auto;
+}

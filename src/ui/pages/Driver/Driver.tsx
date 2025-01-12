@@ -1,6 +1,6 @@
 import { ChangeEvent, FormEvent, useEffect, useState } from "react";
-import "./Driver.css";
-import { driver } from "../../types/driver";
+import { driver } from "../../../types/driver";
+import styles from "./Driver.module.css";
 function Driver() {
     const [driver, setDriver] = useState<driver>({
         id: undefined,
@@ -12,6 +12,7 @@ function Driver() {
         name: "",
         phone: "",
     });
+    const [deleteDriverId, setdeleteDriverId] = useState<number>({});
     const [drivers, setDrivers] = useState<driver[]>([]);
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
@@ -20,6 +21,9 @@ function Driver() {
     const handleUpdateChange = (e: ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
         setUpdateDriver({ ...updateDriver, [name]: value });
+    };
+    const handleDeleteChange = (e: ChangeEvent<HTMLInputElement>) => {
+        setdeleteDriverId(Number(e.target.value));
     };
     useEffect(() => {
         loadDrivers();
@@ -40,12 +44,17 @@ function Driver() {
         setUpdateDriver({ id: undefined, name: "", phone: "" });
         loadDrivers();
     };
-
+    const handleSubmitDelete = async (e: FormEvent) => {
+        e.preventDefault();
+        window.electronApp.deleteDriver(deleteDriverId);
+        setdeleteDriverId(undefined);
+        loadDrivers();
+    };
     return (
         <>
-            <h2 className="title-driver">Motoristas</h2>
+            <h2 className={styles.title}>Motoristas</h2>
 
-            <div className="driver-content">
+            <div className={styles.content}>
                 <table>
                     <thead>
                         <tr>
@@ -76,10 +85,10 @@ function Driver() {
                         ))}
                     </tbody>
                 </table>
-                <div className="box">
+                <div className={styles.box}>
                     <h2>Adicionar Motorista</h2>
                     <form onSubmit={handleSubmit}>
-                        <div className="model-box">
+                        <div className={styles.model_box}>
                             <input
                                 type="text"
                                 name="name"
@@ -90,7 +99,7 @@ function Driver() {
                             />
                             <label>Nome</label>
                         </div>
-                        <div className="model-box">
+                        <div className={styles.model_box}>
                             <input
                                 type="text"
                                 name="phone"
@@ -101,15 +110,15 @@ function Driver() {
                             <label>Telefone</label>
                         </div>
 
-                        <button className="submit" type="submit">
+                        <button className={styles.submit} type="submit">
                             Adicionar
                         </button>
                     </form>
                 </div>
-                <div className="box">
+                <div className={styles.box}>
                     <h2>Atualiza Motorista</h2>
                     <form onSubmit={handleSubmitUpdate}>
-                        <div className="model-box">
+                        <div className={styles.model_box}>
                             <input
                                 type="text"
                                 name="id"
@@ -120,7 +129,7 @@ function Driver() {
                             />
                             <label>Id</label>
                         </div>
-                        <div className="model-box">
+                        <div className={styles.model_box}>
                             <input
                                 type="text"
                                 name="name"
@@ -131,9 +140,9 @@ function Driver() {
                             />
                             <label>Nome</label>
                         </div>
-                        <div className="model-box">
+                        <div className={styles.model_box}>
                             <input
-                                type="text"
+                                type="number"
                                 name="phone"
                                 value={updateDriver.phone}
                                 onChange={handleUpdateChange}
@@ -142,8 +151,26 @@ function Driver() {
                             <label>Telefone</label>
                         </div>
 
-                        <button className="submit" type="submit">
+                        <button className={styles.submit} type="submit">
                             Atualizar
+                        </button>
+                    </form>
+                </div>
+                <div className={styles.box}>
+                    <h2>Deletar Motorista</h2>
+                    <form onSubmit={handleSubmitDelete}>
+                        <div className={styles.model_box}>
+                            <input
+                                type="number"
+                                name="id"
+                                value={deleteDriverId}
+                                onChange={handleDeleteChange}
+                                placeholder=" "
+                            />
+                            <label>Id</label>
+                        </div>
+                        <button className={styles.submit} type="submit">
+                            Deletar
                         </button>
                     </form>
                 </div>
