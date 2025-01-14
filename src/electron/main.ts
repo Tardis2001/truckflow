@@ -6,7 +6,7 @@ import { driver } from "../types/driver.js";
 import { truck } from "../types/truck.js";
 import { tire } from "../types/switchTire.js";
 import { oil } from "../types/oil.js";
-
+import { route } from "../types/routes.js";
 const store = new Store();
 let mainWindow: BrowserWindow;
 app.on("ready", () => {
@@ -57,6 +57,9 @@ if (!store.has("tires")) {
 if (!store.has("oil")) {
     store.set("oil", []);
 }
+if (!store.has("route")) {
+    store.set("route", []);
+}
 if (!store.has("firstTimeDialog")) {
     store.set("firstTimeDialog", true);
 }
@@ -75,7 +78,10 @@ if (!store.has("tireCounter")) {
 if (!store.has("oilCounter")) {
     store.set("oilCounter", 1);
 }
-const generateId = (type: "driver" | "truck" | "tire" | "oil") => {
+if (!store.has("routeCounter")) {
+    store.set("routeCounter", 1);
+}
+const generateId = (type: "driver" | "truck" | "tire" | "oil" | "route") => {
     const counterKey = `${type}Counter`;
     const currentId = store.get(counterKey) as number;
     store.set(counterKey, currentId + 1);
@@ -93,14 +99,13 @@ ipcMain.handle("addDriver", (_, driver: driver) => {
     store.set("drivers", [...drivers, newDriver]);
 });
 ipcMain.handle("deleteDriver", (_, idDriver: number) => {
-    const drivers = (store.get("driver") as driver[]) || [];
+    const drivers = (store.get("drivers") as driver[]) || [];
 
     // Filtra os itens, excluindo aquele com o id fornecido
     const updateddriver = drivers.filter((driver) => driver.id !== idDriver);
 
     // Atualiza a lista no armazenamento
-    store.set("driver", updateddriver);
-
+    store.set("drivers", updateddriver);
     console.log(`Item com id ${idDriver} removido.`);
 });
 ipcMain.handle("updateDriver", (_, newDriver: driver) => {
@@ -254,8 +259,7 @@ ipcMain.handle("deleteOil", (_, oilId: number) => {
     console.log(`Item com id ${oilId} removido.`);
 });
 ipcMain.handle("getOils", () => {
-    const oils = store.get("oil"); // Isso pode ser um banco de dados ou uma variável
-    return oils || [];
+    return store.get("oil");
 });
 // let dialogWindow: BrowserWindow | null;
 
@@ -344,3 +348,26 @@ ipcMain.handle("getOilsMonthandYearData", (_, month: number, year: number) => {
 });
 
 /*-----------------Oil---------------- */
+/*-----------------Routes---------------- */
+ipcMain.handle("getRoute", (_, truckId: number) => {
+    const routes = (store.get("route") as route[]) || [];
+    const filteredRoute = routes.filter(
+        (route) => Number(route.truckId) === Number(truckId)
+    );
+
+    return filteredRoute;
+});
+ipcMain.handle("getRoutes", () => {
+    return store.get("route");
+});
+ipcMain.handle("addRoute", (_, route: route) => {
+    const routes = (store.get("route") as route[]) || [];
+    store.set("route", [
+        ...routes,
+        {
+            ...route,
+            id: generateId("route"),
+        },
+    ]);
+});
+/*-----------------Routes---------------- */

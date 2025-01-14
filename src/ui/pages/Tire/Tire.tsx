@@ -44,8 +44,7 @@ function Tire() {
         setselectedTruckId(e.target.value);
     };
     const loadSelect = () => {
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        window.electronApp.getTrucks().then((data: any) => setTrucks(data));
+        window.electronApp.getTrucks().then((data: truck[]) => setTrucks(data));
     };
     const handleDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         let value = e.target.value;
@@ -89,19 +88,7 @@ function Tire() {
 
         setTireUpdate({ ...tire, dateSwitched: value });
     };
-    // const selectTruck = async (e: ChangeEvent<HTMLSelectElement>) => {
-    //     const selectedTruckId = Number(e.target.value);
-    //     setTire({ ...tire, truckId: selectedTruckId });
 
-    //     if (!isNaN(selectedTruckId)) {
-    //         try {
-    //             const data = await window.electronApp.getTire(selectedTruckId);
-    //             setTires(data);
-    //         } catch (error) {
-    //             console.error("Erro ao carregar pneus:", error);
-    //         }
-    //     }
-    // };
     const handleUpdateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
         setTireUpdate({ ...tireUpdate, [name]: value });
@@ -126,11 +113,11 @@ function Tire() {
         }
         loadSelect();
     };
+
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
         setTire({ ...tire, [name]: value });
     };
-
     const handleSubmit = async (e: FormEvent) => {
         e.preventDefault();
 
@@ -148,7 +135,7 @@ function Tire() {
                 dateSwitched: "",
                 truckId: tire.truckId,
             });
-            await selectTruck({
+            selectTruck({
                 target: { value: tire.truckId.toString() },
             } as any);
         } catch (error) {

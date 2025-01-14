@@ -27,12 +27,13 @@ nav {
 
     display: flex;
     flex-direction: column;
-    width: 350px;
-    justify-content: left;
-    align-items: left;
+    width: 300px;
+    justify-content: flex-start;
+    align-items: flex-start;
 
     gap: 30px;
     margin-top: 30px;
+    margin-right: 100px;
 }
 /* 
 .sidebar_button {
@@ -175,5 +176,9 @@ nav {
 a {
     text-decoration: none;
     color: inherit;
-    width: 100%;
+}
+.sidebar_button_wrapper {
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: inherit;
 }

@@ -202,7 +202,6 @@ function Oil() {
                             <th>Data Troca</th>
                             <th>Marca</th>
                             <th>Modelo</th>
-                            {/* <th>Proxima troca</th> */}
                         </tr>
                     </thead>
                     <tbody>

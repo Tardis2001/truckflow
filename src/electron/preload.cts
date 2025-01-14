@@ -3,6 +3,7 @@ import type { driver } from "../types/driver.js" with { "resolution-mode": "impo
 import type { truck } from "../types/truck.js" with { "resolution-mode": "import" };
 import type { tire } from "../types/switchTire.js" with { "resolution-mode": "import" };
 import type { oil } from "../types/oil.js" with { "resolution-mode": "import" };
+import type { route } from "../types/routes.js" with { "resolution-mode": "import" };
 
 export default process.once("loaded", () => {
     contextBridge.exposeInMainWorld("electronApp", {
@@ -36,6 +37,13 @@ export default process.once("loaded", () => {
         // dialogOilResponse: (input : number) => ipcRenderer.invoke("dialogOilResponse",input),
         // oilNextdays: () => ipcRenderer.invoke("oilNextdays"),
         // getNextOilChange: (lastOilChangeDate:String,oilId : number) => ipcRenderer.invoke("getNextOilChange",lastOilChangeDate, oilId)
+        
+        getRoute:(truckId:number)=> ipcRenderer.invoke("getRoute",truckId),
+        getRoutes:()=> ipcRenderer.invoke("getRoutes"),
+        addRoute:(route : route) => ipcRenderer.invoke("addRoute",route),
+        updateRoute:(updateRoute : route) => ipcRenderer.invoke("updateRoute",updateRoute),
+        deleteRoute:(idRoute : number) => ipcRenderer.invoke("deleteRoute",idRoute),
+    
     });
     
 });

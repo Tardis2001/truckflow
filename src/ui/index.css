@@ -6,11 +6,12 @@ body {
         rgba(208, 60, 63, 1) 0%,
         rgba(255, 90, 48, 1) 100%
     ); */
-    background-image: url("./assets/truck.jpg");
+    /* background-image: url("./assets/truck.jpg");
     background-repeat: no-repeat;
     background-size: cover;
+    backdrop-filter: blur(30px); */
     overflow: hidden;
-
+    background-color: rgb(43, 43, 43);
     width: 100vw;
     height: 100vh;
 }
@@ -18,8 +19,16 @@ body {
     margin: 0;
     padding: 0;
 }
+textarea:focus,
+input:focus {
+    outline: none;
+}
+
 @font-face {
     font-family: "Hanken Grotesk";
     src: local("HankenGrotesk"),
         url(./assets/HankenGrotesk-VariableFont_wght.ttf) format(truetype);
 }
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
